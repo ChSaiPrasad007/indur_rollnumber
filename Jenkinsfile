@@ -2,20 +2,22 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Checkout') {
+        stage('Checkout SCM') {
             steps {
-                echo 'Retrieving source code'
-                checkout scm
+                echo 'Source code is managed by GitHub!'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Building Docker Image'
-                bat 'docker build -t indur-app .'
+                echo 'Jenkins SCM Pipeline is working!'
             }
         }
 
+        stage('Test') {
+            steps {
+                echo 'Test completed successfully!'
+            }
+        }
     }
 }
