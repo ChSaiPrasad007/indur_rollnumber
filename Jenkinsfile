@@ -5,18 +5,21 @@ pipeline {
         stage('Checkout SCM') {
             steps {
                 echo 'Source code is managed by GitHub!'
+                checkout scm
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Jenkins SCM Pipeline is working!'
+                echo 'Building Docker Image'
+                bat 'docker build -t indur-app .'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Test completed successfully!'
+                echo 'Running Docker Container'
+                bat 'docker run --rm indur-app'
             }
         }
     }
